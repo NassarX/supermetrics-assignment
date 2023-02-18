@@ -8,9 +8,17 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+    <php>
+        <!-- define your env variables for the test env here -->
+        <env name="FICTIONAL_SOCIAL_API_HOST" value=""/>
+        <env name="FICTIONAL_SOCIAL_API_CLIENT_ID" value=""/>
+    </php>
     <testsuites>
         <testsuite name="unit">
             <directory>../tests/unit</directory>
+        </testsuite>
+        <testsuite name="integration">
+            <directory>../tests/integration</directory>
         </testsuite>
     </testsuites>
 </phpunit>
