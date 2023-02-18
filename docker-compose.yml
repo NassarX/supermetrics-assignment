@@ -28,6 +28,15 @@ services:
     volumes:
       - ./app:${APPLICATION_ROOT_DIR}:rw
 
+  app-memcached:
+    hostname: ${APPLICATION_MEMCACHED_HOST}
+    container_name: ${APPLICATION_MEMCACHED_CONTAINER_NAME}
+    image: ${APPLICATION_MEMCACHED_IMAGE_NAME}:${APPLICATION_MEMCACHED_IMAGE_TAG}
+    env_file:
+      - env/memcached.env
+    ports:
+      - ${APPLICATION_MEMCACHED_PORT}:${APPLICATION_MEMCACHED_PORT}
+
 networks:
   default:
     name: sm_assignment
