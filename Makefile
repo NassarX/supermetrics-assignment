@@ -38,7 +38,6 @@ up: ## Copy .env.dist file, Starts and Runs the containers
 up-detach: ## Starts and Runs the containers in detached mode
 	@$(call copy_envs)
 	@$(call enable_xdebug)
-
 	docker-compose up --detach
 
 stop: ## Stop and remove a running container
