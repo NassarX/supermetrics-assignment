@@ -30,23 +30,14 @@ define enable_xdebug
 	&& mv env/php-fpm.env.bak env/php-fpm.env)
 endef
 
-## Update clientID
-define update_clientId
-	$(if [ -f app/.env ], \
-	sed 's/^\(FICTIONAL_SOCIAL_API_CLIENT_ID\)=.*/\1=ju16a6m81mhid5ue1z3v2g0uh/g' app/.env > app/.env.bak \
-	&& mv app/.env.bak app/.env)
-endef
-
 up: ## Copy .env.dist file, Starts and Runs the containers
 	@$(call copy_envs)
 	@$(call enable_xdebug)
-	@$(call update_clientId)
 	docker-compose up
 
 up-detach: ## Starts and Runs the containers in detached mode
 	@$(call copy_envs)
 	@$(call enable_xdebug)
-	@$(call update_clientId)
 	docker-compose up --detach
 
 stop: ## Stop and remove a running container
